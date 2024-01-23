@@ -9,7 +9,6 @@ namespace TheFox\Pow;
 
 use DateTime;
 use RuntimeException;
-use TheFox\Utilities\Rand;
 use InvalidArgumentException;
 
 class Hashcash
@@ -352,6 +351,18 @@ class Hashcash
         return $this->stamp;
     }
 
+     /**
+     * From TheFox\Utilities\Rand
+     */
+    public static function randData(int $len = 16): string
+    {
+        $rv = '';
+        for ($n = 0; $n < $len; $n++) {
+            $rv .= chr(mt_rand(0, 255));
+        }
+        return $rv;
+    }
+
     /**
      * @return string
      */
@@ -364,7 +375,7 @@ class Hashcash
 
         $salt = $this->getSalt();
         if (!$salt) {
-            $salt = base64_encode(Rand::data(16));
+            $salt = base64_encode(self::randData(16));
         }
 
         $baseStamp = sprintf('%s:%d:%s:%s:%s:',
@@ -395,7 +406,7 @@ class Hashcash
             }
 
             if (!$found) {
-                $salt = base64_encode(Rand::data(16));
+                $salt = base64_encode(self::randData(16));
             }
         }
 

@@ -29,6 +29,8 @@ class HashcashTest extends TestCase
      */
     public function testSetVersionRuntimeException1()
     {
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionCode(1);
         $hashcash = new Hashcash();
         $hashcash->setVersion(0);
     }
@@ -39,6 +41,8 @@ class HashcashTest extends TestCase
      */
     public function testSetVersionRuntimeException2()
     {
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionCode(2);
         $hashcash = new Hashcash();
         $hashcash->setVersion(9999);
     }
@@ -48,6 +52,7 @@ class HashcashTest extends TestCase
      */
     public function testSetDateInvalidArgumentException()
     {
+        $this->expectException(InvalidArgumentException::class);
         $hashcash = new Hashcash();
         $hashcash->setDate('20140422');
     }
@@ -189,6 +194,7 @@ class HashcashTest extends TestCase
      */
     public function testMintAttemptsMaxRuntimeException()
     {
+        $this->expectException(RuntimeException::class);
         $hashcash = new Hashcash(5, 'example@example.com');
         $hashcash->setDate('140427');
         $hashcash->setSalt('axfcrlV1hxLvF6J9BeDiLw==');
@@ -225,6 +231,8 @@ class HashcashTest extends TestCase
      */
     public function testVerifyInvalidArgumentException1()
     {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionCode(1);
         $hashcash = new Hashcash();
         $hashcash->verify('');
     }
@@ -235,6 +243,8 @@ class HashcashTest extends TestCase
      */
     public function testVerifyInvalidArgumentException2()
     {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionCode(2);
         $hashcash = new Hashcash();
         $hashcash->verify('1:20:140422:mint2:ext2:22060');
     }

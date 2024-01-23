@@ -3,7 +3,6 @@
 require 'vendor/autoload.php';
 
 use TheFox\Pow\Hashcash;
-use TheFox\Utilities\Hex;
 
 declare(ticks=1);
 
@@ -27,7 +26,7 @@ if ($tests[0]) {
 
     $sig = pcntl_signal(SIGALRM, 'sig');
     print 'signal setup: ' . ($sig ? 'ok' : 'failed') . "\n";
-    
+
     for ($bits = 10; $bits < 52 && !$exit; $bits++) {
         $hashcash = new Hashcash($bits, 'example@example.com');
         $stamp = '';

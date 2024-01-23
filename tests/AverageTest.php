@@ -3,7 +3,6 @@
 require 'vendor/autoload.php';
 
 use TheFox\Pow\Hashcash;
-use TheFox\Utilities\Hex;
 
 declare(ticks=1);
 

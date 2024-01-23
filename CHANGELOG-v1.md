@@ -2,6 +2,8 @@
 
 ## v1.9.0 [unreleased]
 
+- PHP 8 ready
+- Removed HashcashDb
 - MIT License
 
 ## v1.8.0
